@@ -16,9 +16,11 @@ def main():
     X , y = datasets.make_moons(n_samples=300, noise=0.08, shuffle=False)
 
     # Cluster the data using DBSCAN
-    kmedoid_cluster = KMediod(X , 5 , 1)
-    medoids , labels = kmedoid_cluster.fit(2, max_steps=1000)
-    
-
+    kmedoid_cluster = KMediod(X , 2 , 1)
+    medoids , labels = kmedoid_cluster.fit(10, max_steps=1000)
+    print(medoids , labels)
+    p = Plot()
+    p.plot_in_2d(X , labels , "Preds")
+    p.plot_in_2d(X , y , "Actual")
 if __name__ == "__main__":
     main()

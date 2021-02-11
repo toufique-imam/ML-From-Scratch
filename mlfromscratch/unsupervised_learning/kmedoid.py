@@ -95,3 +95,5 @@ class KMediod():
                 same_medoids = 0
 
         return (self.medoids_current, self.labels)
+
+    
