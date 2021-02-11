@@ -13,7 +13,7 @@ class KMediod():
         samples = choice(len(self.datapoints), size=self.K, replace=False)
         self.medoids_initial = self.datapoints[samples, :]
 
-    def compute_distance(X, mediods, p):
+    def compute_distance(self, X, mediods, p):
         m = len(X)
         mediods_shape = mediods.shape
 
@@ -30,7 +30,7 @@ class KMediod():
 
         return S
 
-    def assign_labels(S):
+    def assign_labels(self, S):
         return np.argmin(S, axis=1)
 
     def update_medoids(self, medoids, p):
@@ -52,7 +52,7 @@ class KMediod():
 
         return out_medoids
 
-    def has_converged(old_medoids, medoids):
+    def has_converged(self, old_medoids, medoids):
         return set([tuple(x) for x in old_medoids]) == set([tuple(x) for x in medoids])
 
     def fit(self, p, X=None, k=None, starting_medoids=None, max_steps=np.inf, stopping_steps=5):
@@ -72,27 +72,26 @@ class KMediod():
             self.init_medoids()
 
         convereged = False
-        k = self.K
 
         self.labels = np.zeros(len(self.datapoints))
-        medoids_current = self.medoids_initial
+        self.medoids_current = self.medoids_initial
         i = 1
         same_medoids = 0
 
         while (same_medoids < stopping_steps) and (i <= max_steps):
-            old_medoids = medoids_current.copy();
+            old_medoids = self.medoids_current.copy()
 
-            S = self.compute_distance(self.datapoints, medoids_current, p)
+            S = self.compute_distance(self.datapoints, self.medoids_current, p)
 
             self.labels = self.assign_labels(S)
 
-            medoids_current = self.update_medoids(medoids_current, p)
+            self.medoids_current = self.update_medoids(self.medoids_current, p)
 
-            convereged = self.has_converged(old_medoids, medoids_current)
+            convereged = self.has_converged(old_medoids, self.medoids_current)
 
             if(convereged):
                 same_medoids = same_medoids+1
             else:
                 same_medoids = 0
 
-        return (medoids_current, self.labels)
+        return (self.medoids_current, self.labels)
