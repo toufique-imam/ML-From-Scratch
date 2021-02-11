@@ -75,23 +75,24 @@ class KMediod():
         k = self.K
 
         self.labels = np.zeros(len(self.datapoints))
-        self.medoids_current = self.medoids_initial
+        medoids_current = self.medoids_initial
         i = 1
         same_medoids = 0
 
         while (same_medoids < stopping_steps) and (i <= max_steps):
-            old_medoids = self.medoids_current.copy()
-            S = self.compute_distance(self.datapoints, self.medoids_current, p)
+            old_medoids = medoids_current.copy();
+
+            S = self.compute_distance(self.datapoints, medoids_current, p)
 
             self.labels = self.assign_labels(S)
 
-            self.medoids_current = self.update_medoids(self.medoids_current, p)
+            medoids_current = self.update_medoids(medoids_current, p)
 
-            convereged = self.has_converged(old_medoids, self.medoids_current)
+            convereged = self.has_converged(old_medoids, medoids_current)
 
             if(convereged):
                 same_medoids = same_medoids+1
             else:
                 same_medoids = 0
 
-        return (self.medoids_current, self.labels)
+        return (medoids_current, self.labels)
