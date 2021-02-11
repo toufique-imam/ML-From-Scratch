@@ -1,4 +1,5 @@
-from mlfromscratch.unsupervised_learning import k_medoid
+from mlfromscratch.unsupervised_learning import kmedoid
+from mlfromscratch.unsupervised_learning.kmedoid import KMediod
 import sys
 import os
 import math
@@ -15,14 +16,9 @@ def main():
     X , y = datasets.make_moons(n_samples=300, noise=0.08, shuffle=False)
 
     # Cluster the data using DBSCAN
+    kmedoid_cluster = KMediod(X , 5 , 1)
+    medoids , labels = kmedoid_cluster.fit(2, max_steps=1000)
     
-    centers, members, costs, tot_cost, dist_mat = k_medoid.kmedoids(
-        X, y, 5, max_iter=300, tol=0.00001)
-
-
-    # Visualize Results
-    plt.scatter(X[:, 0], y, c=members, s=50, cmap='viridis')
-
 
 if __name__ == "__main__":
     main()

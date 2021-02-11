@@ -74,7 +74,7 @@ class KMediod():
         convereged = False
         k = self.K
 
-        self.labels = np.zeros(len(X))
+        self.labels = np.zeros(len(self.datapoints))
         self.medoids_current = self.medoids_initial
         i = 1
         same_medoids = 0
