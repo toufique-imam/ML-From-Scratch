@@ -17,14 +17,14 @@ setup(
     name='mlfromscratch',
     version=__version__,
     description='Python implementations of some of the fundamental Machine Learning models and algorithms from scratch.',
-    url='https://github.com/eriklindernoren/ML-From-Scratch',
-    download_url='https://github.com/eriklindernoren/ML-From-Scratch/tarball/master',
+    url='https://github.com/sabertooth9/ML-From-Scratch',
+    download_url='https://github.com/sabertooth9/ML-From-Scratch/tarball/master',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
-    author='Erik Linder-Noren',
+    author='Toufique Imam Nuhash',
     install_requires=install_requires,
     setup_requires=['numpy>=1.10', 'scipy>=0.17'],
     dependency_links=dependency_links,
-    author_email='eriklindernoren@gmail.com'
+    author_email='2013nuhash@gmail.com'
 )

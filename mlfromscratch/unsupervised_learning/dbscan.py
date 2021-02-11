@@ -31,27 +31,23 @@ class DBSCAN():
                 neighbors.append(i)
         return np.array(neighbors)
 
+
     def _expand_cluster(self, sample_i, neighbors):
-        """ Recursive method which expands the cluster until we have reached the border
+        """ Iterative method which expands the cluster until we have reached the border
         of the dense area (density determined by eps and min_samples) """
         cluster = [sample_i]
-        # Iterate through neighbors
-        for neighbor_i in neighbors:
-            if not neighbor_i in self.visited_samples:
-                self.visited_samples.append(neighbor_i)
-                # Fetch the sample's distant neighbors (neighbors of neighbor)
-                self.neighbors[neighbor_i] = self._get_neighbors(neighbor_i)
-                # Make sure the neighbor's neighbors are more than min_samples
-                # (If this is true the neighbor is a core point)
-                if len(self.neighbors[neighbor_i]) >= self.min_samples:
-                    # Expand the cluster from the neighbor
-                    expanded_cluster = self._expand_cluster(
-                        neighbor_i, self.neighbors[neighbor_i])
-                    # Add expanded cluster to this cluster
-                    cluster = cluster + expanded_cluster
-                else:
-                    # If the neighbor is not a core point we only add the neighbor point
+        stack = []
+        stack.append(neighbors)
+        while len(stack) > 0:
+            neighbors_now = stack.pop()
+            for neighbor_i in neighbors_now:
+                if not neighbor_i in self.visited_samples:
+                    self.visited_samples.append(neighbor_i)
                     cluster.append(neighbor_i)
+                    self.neighbors[neighbor_i] = self._get_neighbors(
+                        neighbor_i)
+                    if len(self.neighbors[neighbor_i]) >= self.min_samples:
+                        stack.append(self.neighbors[neighbor_i])
         return cluster
 
     def _get_cluster_labels(self):
