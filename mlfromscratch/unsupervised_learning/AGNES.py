@@ -64,8 +64,9 @@ class AgglomerativeClustering(object):
         return np.array(self.centroids), self.labels
 
     def weigted_average(self, centroid1, centroid2, weight1, weight2):
-        new_centroid = [0, 0, 0]
-        for i in range(3):
+        c_size = len(centroid1)
+        new_centroid = np.zeros((c_size))
+        for i in range(c_size):
             new_centroid[i] = np.average(
                 [centroid1[i], centroid2[i]], weights=[weight1, weight2]
             )

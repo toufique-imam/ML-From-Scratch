@@ -22,5 +22,6 @@ def main():
     p = Plot()
     p.plot_in_2d(X , labels , "Preds")
     p.plot_in_2d(X , y , "Actual")
+    
 if __name__ == "__main__":
     main()
