@@ -19,7 +19,7 @@ The purpose of this project is not to produce as optimized and computationally e
 but rather to present the inner workings of them in a transparent and accessible way.
 
 ## FORK
-Added AGNES and KMediod implementations
+Added AGNES and KMediod implementations and other modifications to meet the criteria of Lab work
 
 ## Table of Contents
 - [Machine Learning From Scratch](#machine-learning-from-scratch)
