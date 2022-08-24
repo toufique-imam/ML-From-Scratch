@@ -1,10 +1,25 @@
 # Machine Learning From Scratch
 
+[Iftekher Toufique Imam](https://github.com/toufique-imam)
+
+Data Mining Lab, KUET, BD.
+
+---
+
+[![GitHub Stars](https://img.shields.io/github/stars/toufique-imam/ML-From-Scratch?style=social)](https://github.com/caojiezhang/DAVSR)
+[![download](https://img.shields.io/github/downloads/toufique-imam/ML-From-Scratch/total.svg)](https://github.com/caojiezhang/DAVSR/releases)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=toufique-imam/ML-From-Scratch)
+
+---
+
 ## About
 Python implementations of some of the fundamental Machine Learning models and algorithms from scratch.
 
 The purpose of this project is not to produce as optimized and computationally efficient algorithms as possible
 but rather to present the inner workings of them in a transparent and accessible way.
+
+## FORK
+Added AGNES and KMediod implementations
 
 ## Table of Contents
 - [Machine Learning From Scratch](#machine-learning-from-scratch)
